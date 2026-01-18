@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor Meza | GenAI Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            /* Palette: Refined Agri-Tech */
+            --bg-color: #fcfdfc;
+            --surface-color: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent-green: #059669; /* Emerald 600 */
+            --accent-purple: #7c3aed; /* Violet 600 */
+            
+            /* Gradients */
+            --mesh-gradient: radial-gradient(at 0% 0%, rgba(5, 150, 105, 0.15) 0px, transparent 50%),
+                             radial-gradient(at 100% 0%, rgba(124, 58, 237, 0.15) 0px, transparent 50%),
+                             radial-gradient(at 100% 100%, rgba(5, 150, 105, 0.1) 0px, transparent 50%),
+                             radial-gradient(at 0% 100%, rgba(124, 58, 237, 0.1) 0px, transparent 50%);
+
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --card-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: var(--mesh-gradient);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-primary);
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.2rem;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); }
+        .nav-links a:hover { color: var(--text-primary); }
+
+        /* --- HERO SECTION --- */
+        header {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .hero-content { max-width: 900px; animation: fadeInUp 1s ease-out; }
+
+        .tag-pill {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+            color: var(--accent-purple);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .hero-title {
+            font-size: clamp(3.5rem, 8vw, 6rem);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- BENTO GRID LAYOUT (About) --- */
+        section { padding: 6rem 5%; max-width: 1400px; margin: 0 auto; }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto;
+            gap: 1.5rem;
+        }
+
+        .bento-item {
+            background: var(--surface-color);
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .bento-item:hover { transform: translateY(-5px); }
+
+        /* Specific Grid Placements */
+        .bento-main { grid-column: span 2; }
+        .bento-tall { grid-row: span 2; display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(145deg, #0f172a, #1e293b); color: white; }
+        .bento-tall h3, .bento-tall p { color: white; font-family: 'Inter', sans-serif; }
+        
+        .section-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .bento-number { font-size: 4rem; font-weight: 800; color: var(--accent-green); line-height: 1; margin-bottom: 0.5rem; font-family: 'Inter', sans-serif;}
+        .bento-stat-label { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); }
+
+        /* --- SUBMISSIONS --- */
+        .grid-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            border: 1px solid #f1f5f9;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-hover);
+        }
+
+        .card-visual {
+            height: 240px;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Abstract shapes in cards */
+        .card-visual::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: linear-gradient(45deg, rgba(5, 150, 105, 0.1), rgba(124, 58, 237, 0.1));
+            transform: rotate(45deg);
+        }
+
+        .card-number {
+            font-size: 5rem;
+            font-weight: 900;
+            color: white;
+            opacity: 0.8;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Visual variations */
+        .project-card:nth-child(1) .card-visual { background: linear-gradient(135deg, #34d399, #059669); }
+        .project-card:nth-child(2) .card-visual { background: linear-gradient(135deg, #a78bfa, #7c3aed); }
+        .project-card:nth-child(3) .card-visual { background: linear-gradient(135deg, #fbbf24, #d97706); }
+        .project-card:nth-child(4) .card-visual { background: linear-gradient(135deg, #38bdf8, #0284c7); }
+        .project-card:nth-child(5) .card-visual { background: linear-gradient(135deg, #f472b6, #db2777); }
+        .project-card:nth-child(6) .card-visual { background: linear-gradient(135deg, #94a3b8, #475569); }
+
+
+        .card-content { padding: 2rem; }
+        
+        .week-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #f0fdf4;
+            color: var(--accent-green);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .project-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; font-family: 'Playfair Display', serif;}
+        .project-card p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.5rem; font-family: 'Inter', sans-serif;}
+
+        .card-link {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--accent-green);
+            padding-bottom: 2px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid rgba(0,0,0,0.05);
+            padding: 4rem 5%;
+            text-align: center;
+            background: white;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .bento-main, .bento-tall { grid-column: span 1; grid-row: auto; }
+            .hero-title { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav>
+        <div class="logo">VM.</div>
+        <div class="nav-links">
+            <a href="#about">Profile</a>
+            <a href="#submissions">Work</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header>
+        <div class="hero-content">
+            <span class="tag-pill">Generative AI x Agriculture</span>
+            <h1 class="hero-title">
+                Cultivating Intelligence <br>
+                <span>Through Algorithms</span>
+            </h1>
+            <p class="hero-subtitle">
+                A portfolio by Victor Meza exploring the synthesis of International Agriculture Development and Large Language Models.
+            </p>
+        </div>
+    </header>
+
+    <!-- Bento Grid About Section -->
+    <section id="about">
+        <span class="section-label">The Profile</span>
+        <div class="bento-grid">
+            
+            <!-- Main Bio -->
+            <div class="bento-item bento-main">
+                <h3>About Victor Meza</h3>
+                <p style="margin-top: 1rem; color: var(--text-secondary);">
+                    I am an undergraduate at the <strong>University of California, Davis</strong> (Class of 2026), majoring in International Agriculture Development. My work bridges the gap between traditional botany and emerging AI technologies.
+                </p>
+                <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <span style="background: #f1f5f9; padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">🌱 Botany</span>
+                    <span style="background: #f1f5f9; padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">🤖 GenAI</span>
+                    <span style="background: #f1f5f9; padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">🌍 Sustainability</span>
+                </div>
+            </div>
+
+            <!-- Dark Card (Entrepreneurship) -->
+            <div class="bento-item bento-tall">
+                <div>
+                    <span style="opacity: 0.7; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Current Role</span>
+                    <h3 style="font-size: 2rem; margin-top: 0.5rem;">Plants4You</h3>
+                </div>
+                <div>
+                    <p style="font-size: 0.95rem; opacity: 0.8; margin-bottom: 1.5rem;">
+                        Owner of an online botanical shop specializing in carnivorous and drought-resistant species.
+                    </p>
+                    <div style="font-size: 3rem; font-weight: 700;">500+</div>
+                    <div style="font-size: 0.9rem; opacity: 0.7;">Sales on Etsy</div>
+                </div>
+            </div>
+
+            <!-- Stats 1 -->
+            <div class="bento-item">
+                <div class="bento-number">100+</div>
+                <div class="bento-stat-label">Plant Varieties Propagated</div>
+            </div>
+
+            <!-- Stats 2 -->
+            <div class="bento-item">
+                <div class="bento-number">15%</div>
+                <div class="bento-stat-label">Shipping Costs Reduced via Excel</div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Submissions Gallery -->
+    <section id="submissions">
+        <span class="section-label">Weekly Submissions</span>
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Coursework Archive</h2>
+        
+        <div class="grid-gallery">
+            
+            <!-- Item 1 -->
+            <div class="project-card">
+                <div class="card-visual"><div class="card-number">01</div></div>
+                <div class="card-content">
+                    <span class="week-badge">Week 1</span>
+                    <h3>LLM Fundamentals</h3>
+                    <p>Understanding the architecture of Large Language Models and their application in agricultural research.</p>
+                    <a href="#" class="card-link">Read Analysis</a>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="project-card">
+                <div class="card-visual"><div class="card-number">02</div></div>
+                <div class="card-content">
+                    <span class="week-badge">Week 2</span>
+                    <h3>Prompt Engineering</h3>
+                    <p>Developing zero-shot and chain-of-thought prompts to analyze soil composition data.</p>
+                    <a href="#" class="card-link">View Prompts</a>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="project-card">
+                <div class="card-visual"><div class="card-number">03</div></div>
+                <div class="card-content">
+                    <span class="week-badge">Week 3</span>
+                    <h3>AI Assisted Writing</h3>
+                    <p>Synthesizing literature reviews on sustainable farming using generative text tools.</p>
+                    <a href="#" class="card-link">Read Paper</a>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="project-card">
+                <div class="card-visual"><div class="card-number">04</div></div>
+                <div class="card-content">
+                    <span class="week-badge">Week 4</span>
+                    <h3>Visualizing Crops</h3>
+                    <p>Using Midjourney to simulate drought-resistant landscape designs for urban environments.</p>
+                    <a href="#" class="card-link">View Gallery</a>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="project-card">
+                <div class="card-visual"><div class="card-number">05</div></div>
+                <div class="card-content">
+                    <span class="week-badge">Week 5</span>
+                    <h3>Data Analysis</h3>
+                    <p>Leveraging Code Interpreter to visualize sales trends from my Plants4You dataset.</p>
+                    <a href="#" class="card-link">See Data</a>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="project-card">
+                <div class="card-visual"><div class="card-number">06</div></div>
+                <div class="card-content">
+                    <span class="week-badge">Week 6</span>
+                    <h3>Ethics & Bias</h3>
+                    <p>Critiquing dataset bias in international development models.</p>
+                    <a href="#" class="card-link">Read Essay</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.5rem;">Victor Meza</h2>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">University of California, Davis &bull; Class of 2026</p>
+    </footer>
+
+</body>
+</html>

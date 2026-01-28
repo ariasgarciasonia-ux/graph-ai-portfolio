@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Victor Meza | GenAI Portfolio</title>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
@@ -254,12 +253,13 @@
         }
 
         /* Visual variations */
-        .project-card:nth-child(1) .card-visual { background: linear-gradient(135deg, #34d399, #059669); }
-        .project-card:nth-child(2) .card-visual { background: linear-gradient(135deg, #a78bfa, #7c3aed); }
-        .project-card:nth-child(3) .card-visual { background: linear-gradient(135deg, #fbbf24, #d97706); }
-        .project-card:nth-child(4) .card-visual { background: linear-gradient(135deg, #38bdf8, #0284c7); }
-        .project-card:nth-child(5) .card-visual { background: linear-gradient(135deg, #f472b6, #db2777); }
-        .project-card:nth-child(6) .card-visual { background: linear-gradient(135deg, #94a3b8, #475569); }
+        .project-card:nth-child(1) .card-visual { background: linear-gradient(135deg, #10b981, #3b82f6); } /* Special gradient for Workshop 2 */
+        .project-card:nth-child(2) .card-visual { background: linear-gradient(135deg, #34d399, #059669); }
+        .project-card:nth-child(3) .card-visual { background: linear-gradient(135deg, #a78bfa, #7c3aed); }
+        .project-card:nth-child(4) .card-visual { background: linear-gradient(135deg, #fbbf24, #d97706); }
+        .project-card:nth-child(5) .card-visual { background: linear-gradient(135deg, #38bdf8, #0284c7); }
+        .project-card:nth-child(6) .card-visual { background: linear-gradient(135deg, #f472b6, #db2777); }
+        .project-card:nth-child(7) .card-visual { background: linear-gradient(135deg, #94a3b8, #475569); }
 
 
         .card-content { padding: 2rem; }
@@ -311,7 +311,6 @@
 </head>
 <body>
 
-    <!-- Nav -->
     <nav>
         <div class="logo">VM.</div>
         <div class="nav-links">
@@ -320,10 +319,8 @@
         </div>
     </nav>
 
-    <!-- Hero -->
     <header>
         <div class="hero-content">
-            <!-- Avatar Insertion -->
             <div class="avatar-container">
                 <img src="https://github.com/ariasgarciasonia-ux/graph-ai-portfolio/blob/main/%7BED75BD2A-1B8E-41D0-9DCA-3BDF75CE747C%7D.png?raw=true" alt="Victor Meza">
             </div>
@@ -338,12 +335,10 @@
         </div>
     </header>
 
-    <!-- Bento Grid About Section -->
     <section id="about">
         <span class="section-label">The Profile</span>
         <div class="bento-grid">
             
-            <!-- Main Bio -->
             <div class="bento-item bento-main">
                 <h3>About Victor Meza</h3>
                 <p style="margin-top: 1rem; color: var(--text-secondary);">
@@ -356,7 +351,6 @@
                 </div>
             </div>
 
-            <!-- Dark Card (Entrepreneurship) -->
             <div class="bento-item bento-tall">
                 <div>
                     <span style="opacity: 0.7; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Current Role</span>
@@ -371,13 +365,11 @@
                 </div>
             </div>
 
-            <!-- Stats 1 -->
             <div class="bento-item">
                 <div class="bento-number">100+</div>
                 <div class="bento-stat-label">Plant Varieties Propagated</div>
             </div>
 
-            <!-- Stats 2 -->
             <div class="bento-item">
                 <div class="bento-number">15%</div>
                 <div class="bento-stat-label">Shipping Costs Reduced via Excel</div>
@@ -386,14 +378,22 @@
         </div>
     </section>
 
-    <!-- Submissions Gallery -->
     <section id="submissions">
         <span class="section-label">Weekly Submissions</span>
         <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Coursework Archive</h2>
         
         <div class="grid-gallery">
             
-            <!-- Item 1 -->
+            <div class="project-card">
+                <div class="card-visual"><div class="card-number">W2</div></div>
+                <div class="card-content">
+                    <span class="week-badge">Workshop 2</span>
+                    <h3>Automated Data Analysis</h3>
+                    <p>Analyzing Gapminder data to explore the relationship between HIV infections and ART coverage using AI tools.</p>
+                    <a href="https://github.com/ariasgarciasonia-ux/graph-ai-portfolio/blob/main/New%20HIV%20infections%20and%20ART%20coverage%20analysis.pdf" target="_blank" class="card-link">Read Report</a>
+                </div>
+            </div>
+
             <div class="project-card">
                 <div class="card-visual"><div class="card-number">01</div></div>
                 <div class="card-content">
@@ -404,7 +404,6 @@
                 </div>
             </div>
 
-            <!-- Item 2 -->
             <div class="project-card">
                 <div class="card-visual"><div class="card-number">02</div></div>
                 <div class="card-content">
@@ -415,7 +414,6 @@
                 </div>
             </div>
 
-            <!-- Item 3 -->
             <div class="project-card">
                 <div class="card-visual"><div class="card-number">03</div></div>
                 <div class="card-content">
@@ -426,7 +424,6 @@
                 </div>
             </div>
 
-            <!-- Item 4 -->
             <div class="project-card">
                 <div class="card-visual"><div class="card-number">04</div></div>
                 <div class="card-content">
@@ -437,7 +434,6 @@
                 </div>
             </div>
 
-            <!-- Item 5 -->
             <div class="project-card">
                 <div class="card-visual"><div class="card-number">05</div></div>
                 <div class="card-content">
@@ -448,7 +444,6 @@
                 </div>
             </div>
 
-            <!-- Item 6 -->
             <div class="project-card">
                 <div class="card-visual"><div class="card-number">06</div></div>
                 <div class="card-content">
@@ -462,7 +457,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <h2 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.5rem;">Victor Meza</h2>
         <p style="color: var(--text-secondary); font-size: 0.9rem;">University of California, Davis &bull; Class of 2026</p>

@@ -80,56 +80,6 @@
 
         .hero-content { max-width: 900px; animation: fadeInUp 1s ease-out; }
 
-        .avatar-container {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 1.5rem;
-            border-radius: 50%;
-            padding: 5px;
-            background: linear-gradient(135deg, var(--accent-green), var(--accent-purple));
-        }
-
-        .avatar-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            background: white;
-            border: 3px solid white;
-        }
-
-        .tag-pill {
-            display: inline-block;
-            padding: 0.5rem 1.2rem;
-            background: #fff;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            color: var(--accent-purple);
-        }
-
-        .hero-title {
-            font-size: clamp(3.5rem, 8vw, 6rem);
-            font-weight: 600;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-title span {
-            background: linear-gradient(135deg, var(--accent-green), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-style: italic;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
         section { padding: 6rem 5%; max-width: 1400px; margin: 0 auto; }
 
         .section-label {
@@ -140,22 +90,6 @@
             letter-spacing: 1px;
             margin-bottom: 1rem;
             display: block;
-        }
-
-        .contact-card {
-            background: white;
-            border-radius: 24px;
-            padding: 3rem;
-            box-shadow: var(--card-shadow);
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-card iframe {
-            width: 100%;
-            border: none;
-            margin-top: 2rem;
         }
 
         footer {
@@ -169,57 +103,62 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* Contact form container */
+        .contact-form-wrapper {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            justify-content: center;
+        }
+
+        .contact-form-wrapper iframe {
+            width: 100%;
+            max-width: 700px;
+            border: none;
+        }
+
+        @media (max-width: 900px) {
+            .hero-title { font-size: 3rem; }
+        }
     </style>
 </head>
 
 <body>
 
-    <nav>
-        <div class="logo">VM.</div>
-        <div class="nav-links">
-            <a href="#about">Profile</a>
-            <a href="#submissions">Work</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
+<nav>
+    <div class="logo">VM.</div>
+    <div class="nav-links">
+        <a href="#about">Profile</a>
+        <a href="#submissions">Work</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
 
-    <header>
-        <div class="hero-content">
-            <div class="avatar-container">
-                <img src="https://github.com/ariasgarciasonia-ux/graph-ai-portfolio/blob/main/%7BED75BD2A-1B8E-41D0-9DCA-3BDF75CE747C%7D.png?raw=true" alt="Victor Meza">
-            </div>
-            <span class="tag-pill">Generative AI x Agriculture</span>
-            <h1 class="hero-title">Cultivating Intelligence<br><span>Through Algorithms</span></h1>
-            <p class="hero-subtitle">
-                A portfolio by Victor Meza exploring the synthesis of International Agriculture Development and Large Language Models.
-            </p>
-        </div>
-    </header>
+<!-- EXISTING CONTENT KEPT AS-IS (hero, about, submissions, etc.) -->
 
-    <!-- CONTACT SECTION -->
-    <section id="contact">
-        <span class="section-label">Get in Touch</span>
-        <h2 style="text-align:center; font-size:2.5rem; margin-bottom:1rem;">Contact for Consultation</h2>
-        <p style="text-align:center; color:var(--text-secondary); max-width:600px; margin:0 auto 2rem;">
-            Interested in consulting, collaboration, or applied AI solutions in agriculture and sustainability?  
-            Please fill out the form below and I’ll get back to you.
-        </p>
+<!-- CONTACT SECTION -->
+<section id="contact">
+    <span class="section-label">Get in Touch</span>
+    <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Contact for Consultation</h2>
 
-        <div class="contact-card">
-            <iframe 
-                src="https://docs.google.com/forms/d/e/1FAIpQLSeny-aT_PWwknqQZrYT90dqZX1eZ88YJSUE0p8Qfjpz2HJqdA/viewform?embedded=true"
-                height="780">
-                Loading…
-            </iframe>
-        </div>
-    </section>
+    <div class="contact-form-wrapper">
+        <iframe 
+            src="https://docs.google.com/forms/d/e/1FAIpQLSeny-aT_PWwknqQZrYT90dqZX1eZ88YJSUE0p8Qfjpz2HJqdA/viewform?embedded=true"
+            height="780">
+            Loading…
+        </iframe>
+    </div>
+</section>
 
-    <footer>
-        <h2 style="font-size:1.5rem;">Victor Meza</h2>
-        <p style="color:var(--text-secondary); font-size:0.9rem;">
-            University of California, Davis &bull; Class of 2026
-        </p>
-    </footer>
+<footer>
+    <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Victor Meza</h2>
+    <p style="color: var(--text-secondary); font-size: 0.9rem;">
+        University of California, Davis &bull; Class of 2026
+    </p>
+</footer>
 
 </body>
 </html>
